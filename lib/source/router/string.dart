@@ -1,0 +1,9 @@
+const SPLASH ="/splash";
+const LOGIN ="/login";
+const REGISTER ="/register";
+const DASHBOARD = "/";
+const HOME = "/home";
+const FAVORITE = "/favorite";
+const PRODUCT = "/product";
+const CART = "/cart";
+const PROFILE = "/profile";
