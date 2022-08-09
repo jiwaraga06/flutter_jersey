@@ -1,7 +1,7 @@
-const SPLASH ="/splash";
+const SPLASH ="/";
 const LOGIN ="/login";
 const REGISTER ="/register";
-const DASHBOARD = "/";
+const DASHBOARD = "/dashboard";
 const HOME = "/home";
 const FAVORITE = "/favorite";
 const PRODUCT = "/product";

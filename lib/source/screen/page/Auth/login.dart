@@ -1,7 +1,7 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/auth_cubit.dart';
 import 'package:flutter_jersey/source/router/string.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<JerseyCubit, JerseyState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginLoading) {
             showDialog(
@@ -145,7 +145,7 @@ class _LoginState extends State<Login> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<JerseyCubit>(context).login(controllerEmail.text, controllerPassword.text, context);
+                      BlocProvider.of<AuthCubit>(context).login(controllerEmail.text, controllerPassword.text, context);
                     },
                     style: ElevatedButton.styleFrom(),
                     child: Text(

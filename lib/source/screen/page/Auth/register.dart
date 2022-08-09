@@ -1,7 +1,7 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/auth_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,6 +22,7 @@ class _RegisterState extends State<Register> {
       password = !password;
     });
   }
+
   var error = {};
 
   @override
@@ -40,7 +41,7 @@ class _RegisterState extends State<Register> {
           ),
         ),
       ),
-      body: BlocListener<JerseyCubit, JerseyState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is RegisterLoading) {
             showDialog(
@@ -49,7 +50,7 @@ class _RegisterState extends State<Register> {
                   return Center(child: CircularProgressIndicator());
                 });
           }
-          if(state is RegisterLoaded){
+          if (state is RegisterLoaded) {
             Navigator.of(context).pop();
           }
           if (state is RegisterMessage) {
@@ -61,14 +62,13 @@ class _RegisterState extends State<Register> {
           }
           if (state is RegisterMessageSuccess) {
             CoolAlert.show(
-              context: context,
-              type: CoolAlertType.success,
-              title: state.message,
-              onConfirmBtnTap: (){
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              }
-            );
+                context: context,
+                type: CoolAlertType.success,
+                title: state.message,
+                onConfirmBtnTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                });
           }
           if (state is RegisterError) {
             setState(() {
@@ -177,7 +177,7 @@ class _RegisterState extends State<Register> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<JerseyCubit>(context).register(controllerNama.text, controllerEmail.text, controllerPassword.text);
+                      BlocProvider.of<AuthCubit>(context).register(controllerNama.text, controllerEmail.text, controllerPassword.text);
                     },
                     style: ElevatedButton.styleFrom(),
                     child: Text(

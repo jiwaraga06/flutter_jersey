@@ -54,7 +54,7 @@ class RegisterMessageSuccess extends JerseyState {
 }
 
 class ProductResult extends JerseyState {
-  final List<ModelProduct>? product;
+  final List<dynamic>? product;
 
   ProductResult({this.product});
 }

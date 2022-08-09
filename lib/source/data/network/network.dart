@@ -39,6 +39,7 @@ class MyNetwork {
       print("Error network getProduct");
     }
   }
+
   Future bestProduct() async {
     try {
       var url = Uri.parse(Api.bestproduct());
@@ -48,6 +49,7 @@ class MyNetwork {
       print("Error network bestProduct");
     }
   }
+
   Future liga() async {
     try {
       var url = Uri.parse(Api.liga());
@@ -55,6 +57,35 @@ class MyNetwork {
       return response;
     } catch (e) {
       print("Error network liga");
+    }
+  }
+
+  Future addWishlist(body) async {
+    try {
+      var url = Uri.parse(Api.addWishlist());
+      var response = await http.post(url, body: body);
+      return response;
+    } catch (e) {
+      print("Error network addWishlist");
+    }
+  }
+  Future removeWishlist(body) async {
+    try {
+      var url = Uri.parse(Api.removeWishlist());
+      var response = await http.post(url, body: body);
+      return response;
+    } catch (e) {
+      print("Error network removeWishlist");
+    }
+  }
+
+  Future getWishlist(id) async {
+    try {
+      var url = Uri.parse(Api.getWishlist(id));
+      var response = await http.get(url);
+      return response;
+    } catch (e) {
+      print("Error network addWishlist");
     }
   }
 }

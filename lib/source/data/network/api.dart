@@ -16,4 +16,13 @@ class Api {
   static bestproduct(){
     return '$baseurl/api/bestProduct';
   }
+  static getWishlist(id){
+    return '$baseurl/api/getWishlist/$id';
+  }
+  static addWishlist(){
+    return '$baseurl/api/addWishlist';
+  }
+  static removeWishlist(){
+    return '$baseurl/api/removeWihslist';
+  }
 }

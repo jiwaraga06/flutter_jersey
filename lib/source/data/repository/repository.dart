@@ -33,8 +33,32 @@ class MyRepository {
     final json = await myNetwork!.bestProduct();
     return json;
   }
+
   Future liga() async {
     final json = await myNetwork!.liga();
+    return json;
+  }
+
+  Future addWishlist(id_product, user_id, is_favorite) async {
+    var body = {
+      "id_product": id_product.toString(),
+      "user_id": user_id.toString(),
+      "is_favorite": is_favorite.toString(),
+    };
+    final json = await myNetwork!.addWishlist(body);
+    return json;
+  }
+  Future removeWishlist(id_product, user_id, is_favorite) async {
+    var body = {
+      "id_product": id_product.toString(),
+      "user_id": user_id.toString(),
+      "is_favorite": is_favorite.toString(),
+    };
+    final json = await myNetwork!.removeWishlist(body);
+    return json;
+  }
+  Future getWishlist(id) async {
+    final json = await myNetwork!.getWishlist(id);
     return json;
   }
 }

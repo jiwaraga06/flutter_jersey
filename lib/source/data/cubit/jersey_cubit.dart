@@ -7,51 +7,14 @@ import 'package:flutter_jersey/source/data/model/ModelProduct.dart';
 import 'package:flutter_jersey/source/data/repository/repository.dart';
 import 'package:flutter_jersey/source/router/string.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'jersey_state.dart';
-
 
 class JerseyCubit extends Cubit<JerseyState> {
   final MyRepository? myRepository;
   JerseyCubit({this.myRepository}) : super(JerseyInitial());
 
-  void splashAuth() async {
-    emit(SplashLoading());
-    await Future.delayed(Duration(seconds: 2));
-    emit(SplashLoaded());
-    // Navigator.pushReplacementNamed(context, LOGIN);
-  }
-
-  void login(email, password, context) async {
-    emit(LoginLoading());
-    myRepository!.login(email, password).then((value) async {
-      emit(LoginLoaded());
-      var json = jsonDecode(value.body);
-      print("Login : $json");
-      if (value.statusCode == 200) {
-        Navigator.pushReplacementNamed(context, DASHBOARD);
-        emit(LoginMessageSuccess(message: json['message']));
-      } else {
-        emit(LoginMessage(message: json['message']));
-        emit(LoginError(error: json['error']));
-      }
-    });
-  }
-
-  void register(nama, email, password) async {
-    emit(RegisterLoading());
-    myRepository!.register(nama, email, password).then((value) async {
-      emit(RegisterLoaded());
-      var json = jsonDecode(value.body);
-      print("Register : $json");
-      if (value.statusCode == 200) {
-        emit(RegisterMessageSuccess(message: json['message']));
-      } else {
-        emit(RegisterMessage(message: json['message']));
-        emit(RegisterError(error: json['error']));
-      }
-    });
-  }
   // void getLiga() async {
   //   // emit(bestProductLoading());
   //   myRepository!.liga().then((value) {
@@ -71,9 +34,13 @@ class JerseyCubit extends Cubit<JerseyState> {
       emit(BestProductResult(bestproduct: product));
     });
   }
-  void tester(){
-    print("Tester");
+
+  void addWishlist(id_product, is_favorite) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var user_id = pref.getString("id");
+    myRepository!.addWishlist(id_product, user_id, is_favorite).then((value) {
+      var json = jsonDecode(value.body);
+      print(json);
+    });
   }
-
-
 }
