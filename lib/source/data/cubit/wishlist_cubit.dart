@@ -29,6 +29,12 @@ class WishlistCubit extends Cubit<WishlistState> {
       var json = jsonDecode(value.body);
       print(json);
     });
+  } void addWishlist(id_product, is_favorite) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var user_id = pref.getString("id");
+    myRepository!.addWishlist(id_product, user_id, is_favorite).then((value) {
+      var json = jsonDecode(value.body);
+      print(json);
+    });
   }
-
 }

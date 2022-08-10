@@ -41,7 +41,7 @@ class _FavoriteState extends State<Favorite> {
       ),
       body: ListView(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -77,6 +77,8 @@ class _FavoriteState extends State<Favorite> {
                 );
               }
               return GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   childAspectRatio: 1 / 1.5,

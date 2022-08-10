@@ -198,7 +198,7 @@ class _HomeState extends State<Home> {
                                         top: 0.0,
                                         child: InkWell(
                                             onTap: () {
-                                              BlocProvider.of<JerseyCubit>(context).addWishlist(data['id'], 1);
+                                              BlocProvider.of<WishlistCubit>(context).addWishlist(data['id'], 1);
                                             },
                                             child: Icon(Icons.favorite, size: 17, color: Colors.black)))
                                   ],
