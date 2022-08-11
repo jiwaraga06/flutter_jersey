@@ -39,6 +39,15 @@ class MyNetwork {
       print("Error network getProduct");
     }
   }
+  Future getProductDetail(id) async {
+    try {
+      var url = Uri.parse(Api.productDetail(id));
+      var response = await http.get(url);
+      return response;
+    } catch (e) {
+      print("Error network getProductDetail");
+    }
+  }
 
   Future bestProduct() async {
     try {

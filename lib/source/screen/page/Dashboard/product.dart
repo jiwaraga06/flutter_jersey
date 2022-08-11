@@ -4,6 +4,7 @@ import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class Product extends StatefulWidget {
   Product({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class Product extends StatefulWidget {
 }
 
 class _ProductState extends State<Product> {
+  final formatCurrency =  NumberFormat.simpleCurrency(locale: 'id_ID');
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<JerseyCubit>(context).getProduct();
@@ -78,7 +80,7 @@ class _ProductState extends State<Product> {
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  childAspectRatio: 1 / 1.5,
+                  childAspectRatio: 1 / 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
@@ -107,7 +109,7 @@ class _ProductState extends State<Product> {
                         Stack(
                           children: [
                             Image.network(
-                              "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
+                              "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
                               height: 120,
                               width: 120,
                             ),
@@ -129,7 +131,7 @@ class _ProductState extends State<Product> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'Rp. ' + data['harga'].toString(),
+                          formatCurrency.format(data['harga']).toString() ,
                           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 2),

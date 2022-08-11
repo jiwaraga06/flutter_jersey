@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jersey/source/data/cubit/auth_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/detail_jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/liga_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<LigaCubit>(
           create: (ligaContext) => LigaCubit(myRepository: myRepository),
+        ),
+        BlocProvider<DetailJerseyCubit>(
+          create: (ligaContext) => DetailJerseyCubit(myRepository: myRepository),
         ),
       ],
       child: MaterialApp(

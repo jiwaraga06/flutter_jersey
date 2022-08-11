@@ -7,6 +7,7 @@ import 'package:flutter_jersey/source/screen/page/Dashboard/cart.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/favorite.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/home.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/product.dart';
+import 'package:flutter_jersey/source/screen/page/Dashboard/product_detail.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/profile.dart';
 import 'package:flutter_jersey/source/screen/splash.dart';
 
@@ -68,6 +69,21 @@ class RouterNavigation {
       case PROFILE:
         return MaterialPageRoute(
           builder: (_) => Profile(),
+        );
+      case PRODUCT_DETAIL:
+      var id = settings.arguments;
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => ProductDetail(id: id),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(0.0, 1.0);
+            const end = Offset.zero;
+            const curve = Curves.easeOutCubic;
+            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
         );
       default:
         return null;

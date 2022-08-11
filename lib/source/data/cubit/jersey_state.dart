@@ -59,6 +59,8 @@ class ProductResult extends JerseyState {
   ProductResult({this.product});
 }
 
+
+
 class BestProductResult extends JerseyState {
   final List<dynamic>? bestproduct;
 

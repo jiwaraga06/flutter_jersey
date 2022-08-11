@@ -6,6 +6,7 @@ import 'package:flutter_jersey/source/data/network/network.dart';
 import 'package:flutter_jersey/source/data/repository/repository.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class Favorite extends StatefulWidget {
   Favorite({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class Favorite extends StatefulWidget {
 }
 
 class _FavoriteState extends State<Favorite> {
+  final formatCurrency = NumberFormat.simpleCurrency(locale: 'id_ID');
   @override
   Widget build(BuildContext favoriteContext) {
     BlocProvider.of<WishlistCubit>(favoriteContext).getwishtlist();
@@ -41,7 +43,6 @@ class _FavoriteState extends State<Favorite> {
       ),
       body: ListView(
         shrinkWrap: true,
-        
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -81,7 +82,7 @@ class _FavoriteState extends State<Favorite> {
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  childAspectRatio: 1 / 1.5,
+                  childAspectRatio: 1 / 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
@@ -110,7 +111,7 @@ class _FavoriteState extends State<Favorite> {
                         Stack(
                           children: [
                             Image.network(
-                              "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
+                              "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
                               height: 120,
                               width: 120,
                             ),
@@ -133,7 +134,7 @@ class _FavoriteState extends State<Favorite> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'Rp. ' + data['harga'].toString(),
+                          formatCurrency.format(data['harga']).toString(),
                           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 2),

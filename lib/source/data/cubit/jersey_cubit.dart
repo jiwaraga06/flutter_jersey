@@ -35,6 +35,7 @@ class JerseyCubit extends Cubit<JerseyState> {
       emit(BestProductResult(bestproduct: product));
     });
   }
+ 
 
  
 }

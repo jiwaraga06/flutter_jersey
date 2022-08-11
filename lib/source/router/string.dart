@@ -1,9 +1,10 @@
-const SPLASH ="/";
-const LOGIN ="/login";
-const REGISTER ="/register";
+const SPLASH = "/";
+const LOGIN = "/login";
+const REGISTER = "/register";
 const DASHBOARD = "/dashboard";
 const HOME = "/home";
 const FAVORITE = "/favorite";
 const PRODUCT = "/product";
 const CART = "/cart";
 const PROFILE = "/profile";
+const PRODUCT_DETAIL = "/product/detail";

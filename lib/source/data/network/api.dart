@@ -1,4 +1,4 @@
-String baseurl = "http://192.168.101.25:8000";
+String baseurl = "http://192.168.50.6:8000";
 
 class Api {
   static login() {
@@ -7,11 +7,14 @@ class Api {
   static register() {
     return '$baseurl/api/register';
   }
+  static liga(){
+    return '$baseurl/api/getLiga';
+  }
   static product(){
     return '$baseurl/api/getProduct';
   }
-  static liga(){
-    return '$baseurl/api/getLiga';
+  static productDetail(id){
+    return '$baseurl/api/productDetail/$id';
   }
   static bestproduct(){
     return '$baseurl/api/bestProduct';

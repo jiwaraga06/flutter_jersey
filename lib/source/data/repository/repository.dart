@@ -29,6 +29,11 @@ class MyRepository {
     return json;
   }
 
+  Future getProductDetail(id) async {
+    final json = await myNetwork!.getProductDetail(id);
+    return json;
+  }
+
   Future getBestProduct() async {
     final json = await myNetwork!.bestProduct();
     return json;
@@ -48,6 +53,7 @@ class MyRepository {
     final json = await myNetwork!.addWishlist(body);
     return json;
   }
+
   Future removeWishlist(id_product, user_id, is_favorite) async {
     var body = {
       "id_product": id_product.toString(),
@@ -57,6 +63,7 @@ class MyRepository {
     final json = await myNetwork!.removeWishlist(body);
     return json;
   }
+
   Future getWishlist(id) async {
     final json = await myNetwork!.getWishlist(id);
     return json;
