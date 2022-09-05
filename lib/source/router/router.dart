@@ -56,7 +56,7 @@ class RouterNavigation {
         );
       case FAVORITE:
         return MaterialPageRoute(
-          builder: (context) => Favorite(),
+          builder: (context) => const Favorite(),
         );
       case PRODUCT:
         return MaterialPageRoute(
@@ -71,7 +71,7 @@ class RouterNavigation {
           builder: (_) => Profile(),
         );
       case PRODUCT_DETAIL:
-      var id = settings.arguments;
+        var id = settings.arguments;
         return PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => ProductDetail(id: id),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

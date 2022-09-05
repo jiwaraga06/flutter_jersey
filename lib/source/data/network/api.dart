@@ -1,31 +1,51 @@
-String baseurl = "http://192.168.50.6:8000";
+String baseurl = "http://192.168.101.25:8000";
 
 class Api {
   static login() {
     return '$baseurl/api/login';
   }
+
   static register() {
     return '$baseurl/api/register';
   }
-  static liga(){
+
+  static liga() {
     return '$baseurl/api/getLiga';
   }
-  static product(){
+
+  static product() {
     return '$baseurl/api/getProduct';
   }
-  static productDetail(id){
+
+  static productDetail(id) {
     return '$baseurl/api/productDetail/$id';
   }
-  static bestproduct(){
+
+  static bestproduct() {
     return '$baseurl/api/bestProduct';
   }
-  static getWishlist(id){
+
+  static getWishlist(id) {
     return '$baseurl/api/getWishlist/$id';
   }
-  static addWishlist(){
+
+  static addWishlist() {
     return '$baseurl/api/addWishlist';
   }
-  static removeWishlist(){
+
+  static removeWishlist() {
     return '$baseurl/api/removeWihslist';
+  }
+
+  static getProfile(id) {
+    return '$baseurl/api/getProfile/$id';
+  }
+
+  static getPesananDetail() {
+    return '$baseurl/api/getPesananDetail';
+  }
+
+  static getTotalHarga() {
+    return '$baseurl/api/getTotalHarga';
   }
 }

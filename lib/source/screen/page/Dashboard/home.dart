@@ -3,16 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/liga_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
-import 'package:flutter_jersey/source/data/network/network.dart';
-import 'package:flutter_jersey/source/data/repository/repository.dart';
 import 'package:flutter_jersey/source/router/string.dart';
-// import 'package:flutter_jersey/source/data/cubit/liga_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -70,8 +67,8 @@ class _HomeState extends State<Home> {
                   ),
                   child: Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           FontAwesomeIcons.layerGroup,
                           size: 20,
@@ -120,7 +117,7 @@ class _HomeState extends State<Home> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.network(
-                                  "http://192.168.50.6:8000/assets/liga/${data['gambar']}",
+                                  "http://192.168.101.25:8000/assets/liga/${data['gambar']}",
                                 ),
                               ],
                             ),
@@ -163,7 +160,7 @@ class _HomeState extends State<Home> {
                       );
                     }
                     return SizedBox(
-                      height: 250,
+                      height: 300,
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -192,7 +189,7 @@ class _HomeState extends State<Home> {
                                 Stack(
                                   children: [
                                     Image.network(
-                                      "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
+                                      "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
                                       height: 120,
                                       width: 120,
                                     ),

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
-import 'package:flutter_jersey/source/data/network/network.dart';
-import 'package:flutter_jersey/source/data/repository/repository.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class Favorite extends StatefulWidget {
-  Favorite({Key? key}) : super(key: key);
+  const Favorite({Key? key}) : super(key: key);
 
   @override
   State<Favorite> createState() => _FavoriteState();
@@ -81,8 +78,8 @@ class _FavoriteState extends State<Favorite> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  childAspectRatio: 1 / 2,
+                  crossAxisCount: 2,
+                  childAspectRatio: 1 / 1.5,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
@@ -111,7 +108,7 @@ class _FavoriteState extends State<Favorite> {
                         Stack(
                           children: [
                             Image.network(
-                              "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
+                              "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
                               height: 120,
                               width: 120,
                             ),

@@ -68,4 +68,19 @@ class MyRepository {
     final json = await myNetwork!.getWishlist(id);
     return json;
   }
+
+  Future getProfile(id) async {
+    final json = await myNetwork!.getProfile(id);
+    return json;
+  }
+
+  Future totalHarga(id) async {
+    final json = await myNetwork!.getTotalharga(id);
+    return json;
+  }
+
+  Future getPesananDetail(id) async {
+    final json = await myNetwork!.getPesananDetail(id);
+    return json;
+  }
 }

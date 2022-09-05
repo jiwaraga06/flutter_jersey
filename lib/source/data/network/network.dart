@@ -39,6 +39,7 @@ class MyNetwork {
       print("Error network getProduct");
     }
   }
+
   Future getProductDetail(id) async {
     try {
       var url = Uri.parse(Api.productDetail(id));
@@ -78,6 +79,7 @@ class MyNetwork {
       print("Error network addWishlist");
     }
   }
+
   Future removeWishlist(body) async {
     try {
       var url = Uri.parse(Api.removeWishlist());
@@ -95,6 +97,40 @@ class MyNetwork {
       return response;
     } catch (e) {
       print("Error network addWishlist");
+    }
+  }
+
+  Future getProfile(id) async {
+    try {
+      var url = Uri.parse(Api.getProfile(id));
+      var response = await http.get(url);
+      return response;
+    } catch (e) {
+      print("Error network profile");
+    }
+  }
+
+  Future getPesananDetail(id) async {
+    try {
+      var url = Uri.parse(Api.getPesananDetail());
+      var response = await http.post(url, body: {
+        "user_id": id,
+      });
+      return response;
+    } catch (e) {
+      print("Error network pesanan detail");
+    }
+  }
+
+  Future getTotalharga(id) async {
+    try {
+      var url = Uri.parse(Api.getTotalHarga());
+      var response = await http.post(url, body: {
+        "user_id": id,
+      });
+      return response;
+    } catch (e) {
+      print("Error network total harga");
     }
   }
 }

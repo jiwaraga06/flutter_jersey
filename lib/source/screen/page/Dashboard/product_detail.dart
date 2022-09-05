@@ -46,7 +46,7 @@ class _ProductDetailState extends State<ProductDetail> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
+                  "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
                   height: 250,
                 ),
               ),

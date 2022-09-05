@@ -4,6 +4,9 @@ import 'package:flutter_jersey/source/data/cubit/auth_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/detail_jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/liga_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/pesanan_detail_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/profile_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/total_harga_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
 import 'package:flutter_jersey/source/data/network/network.dart';
 import 'package:flutter_jersey/source/data/repository/repository.dart';
@@ -38,8 +41,17 @@ class MyApp extends StatelessWidget {
           create: (ligaContext) => LigaCubit(myRepository: myRepository),
         ),
         BlocProvider<DetailJerseyCubit>(
-          create: (ligaContext) => DetailJerseyCubit(myRepository: myRepository),
+          create: (detailJerseyContext) => DetailJerseyCubit(myRepository: myRepository),
         ),
+        BlocProvider<ProfileCubit>(
+          create: (profile) => ProfileCubit(myRepository: myRepository),
+        ),
+        BlocProvider<PesananDetailCubit>(
+          create: (pesananDetail) => PesananDetailCubit(myRepository: myRepository),
+        ),
+        BlocProvider<TotalHargaCubit>(
+          create: (totalHarga) => TotalHargaCubit(myRepository: myRepository),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_jersey/source/data/cubit/profile_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +14,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ProfileCubit>(context).getProfile();
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -57,18 +60,29 @@ class _ProfileState extends State<Profile> {
             child: Text("Gambar"),
           ),
           const SizedBox(height: 12),
-          Column(
-            children: [
-              const SizedBox(height: 8),
-              Text("Nama"),
-              const SizedBox(height: 8),
-              Text("Email"),
-              const SizedBox(height: 8),
-              Text("Nohp"),
-              const SizedBox(height: 8),
-              Text("Alamat"),
-            ],
-          )
+          BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              if (state is ProfileLoaded == false) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              var profile = (state as ProfileLoaded).profile;
+              if (profile!.isEmpty) {
+                return Center(
+                  child: Text("Kosong"),
+                );
+              }
+              return Column(
+                children: [
+                  const SizedBox(height: 8),
+                  Text(profile['name']),
+                  const SizedBox(height: 8),
+                  Text(profile['email']),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );

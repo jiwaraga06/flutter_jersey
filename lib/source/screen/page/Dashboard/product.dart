@@ -14,7 +14,7 @@ class Product extends StatefulWidget {
 }
 
 class _ProductState extends State<Product> {
-  final formatCurrency =  NumberFormat.simpleCurrency(locale: 'id_ID');
+  final formatCurrency = NumberFormat.simpleCurrency(locale: 'id_ID');
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<JerseyCubit>(context).getProduct();
@@ -41,7 +41,6 @@ class _ProductState extends State<Product> {
       ),
       body: ListView(
         shrinkWrap: true,
-        
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -79,8 +78,8 @@ class _ProductState extends State<Product> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  childAspectRatio: 1 / 2,
+                  crossAxisCount: 2,
+                  childAspectRatio: 1 / 1.5,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
@@ -109,7 +108,7 @@ class _ProductState extends State<Product> {
                         Stack(
                           children: [
                             Image.network(
-                              "http://192.168.50.6:8000/assets/jersey/${data['gambar']}",
+                              "http://192.168.101.25:8000/assets/jersey/${data['gambar']}",
                               height: 120,
                               width: 120,
                             ),
@@ -131,7 +130,7 @@ class _ProductState extends State<Product> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          formatCurrency.format(data['harga']).toString() ,
+                          formatCurrency.format(data['harga']).toString(),
                           style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 2),
