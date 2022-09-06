@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jersey/source/data/cubit/detail_jersey_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/store_keranjang_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -115,7 +116,9 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: SizedBox(
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      BlocProvider.of<StoreKeranjangCubit>(context).masukanKeranjang(data['id']);
+                    },
                     child: Text("Masukan Keranjang"),
                   ),
                 ),

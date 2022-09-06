@@ -83,4 +83,17 @@ class MyRepository {
     final json = await myNetwork!.getPesananDetail(id);
     return json;
   }
+
+  Future masukanKeranjang(product_id, jumlah_pesanan, user_id) async {
+    var body = {
+      "product_id": product_id.toString(),
+      "jumlah_pesanan": jumlah_pesanan.toString(),
+      "user_id": user_id.toString(),
+      "nama": "",
+      "nomor": "",
+      "nameset": "",
+    };
+    final json = await myNetwork!.masukanKeranjang(body);
+    return json;
+  }
 }

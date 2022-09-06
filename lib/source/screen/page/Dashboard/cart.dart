@@ -61,33 +61,33 @@ class _CartState extends State<Cart> {
                   ],
                 ),
                 const SizedBox(height: 8),
-                  BlocBuilder<TotalHargaCubit, TotalHargaState>(
-                          builder: (context, state) {
-                            if (state is TotalHargaLoaded == false) {
-                              return Container();
-                            }
-                            var totalHarga = (state as TotalHargaLoaded).totalharga;
-                            if (totalHarga!.isEmpty) {
-                              return Container();
-                            }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Total Harga", style: GoogleFonts.poppins(fontSize: 15)),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      formatCurrency.format(totalHarga['total_harga']).toString(),
-                                      style: TextStyle(fontSize: 17),
-                                    ),
-                                    ElevatedButton(onPressed: () {}, child: Text("CheckOut Sekarang")),
-                                  ],
-                                ),
-                              ],
-                            );
-                          },
+                BlocBuilder<TotalHargaCubit, TotalHargaState>(
+                  builder: (context, state) {
+                    if (state is TotalHargaLoaded == false) {
+                      return Container();
+                    }
+                    var totalHarga = (state as TotalHargaLoaded).totalharga;
+                    if (totalHarga!.isEmpty) {
+                      return Container();
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Total Harga", style: GoogleFonts.poppins(fontSize: 15)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              formatCurrency.format(totalHarga[0]['total_harga']).toString(),
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            ElevatedButton(onPressed: () {}, child: Text("CheckOut Sekarang")),
+                          ],
                         ),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -95,13 +95,16 @@ class _CartState extends State<Cart> {
             builder: (context, state) {
               if (state is PesananDetailLoaded == false) {
                 return Center(
-                  child: Text("Belum ada Pesanan"),
+                  child: CircularProgressIndicator(),
                 );
               }
               var data = (state as PesananDetailLoaded).pesananDetail;
               if (data!.isEmpty) {
-                return Center(
-                  child: CircularProgressIndicator(),
+                return const SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text("Belum ada Pesanan"),
+                  ),
                 );
               }
               return Flexible(
@@ -201,9 +204,7 @@ class _CartState extends State<Cart> {
                                         TableRow(children: [
                                           Text('Nameset'),
                                           Text(':'),
-                                          Text(
-                                            formatCurrency.format(value['nameset']).toString(),
-                                          ),
+                                          Text(formatCurrency.format(value['nameset']).toString()),
                                         ]),
                                         TableRow(children: [
                                           Text('Nomor'),

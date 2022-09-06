@@ -48,4 +48,8 @@ class Api {
   static getTotalHarga() {
     return '$baseurl/api/getTotalHarga';
   }
+
+  static masukanKeranjang() {
+    return '$baseurl/api/masukanKeranjang';
+  }
 }

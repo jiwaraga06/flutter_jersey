@@ -18,7 +18,7 @@ class PesananDetailCubit extends Cubit<PesananDetailState> {
     myRepository!.getPesananDetail(id).then((value) {
       var json = jsonDecode(value.body);
       print(json);
-      var pesananDetail = json['data'] as List;
+        var pesananDetail = json['data'] as List;
       emit(PesananDetailLoaded(pesananDetail: pesananDetail));
     });
   }

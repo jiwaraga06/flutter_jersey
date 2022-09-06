@@ -6,6 +6,7 @@ import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/liga_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/pesanan_detail_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/profile_cubit.dart';
+import 'package:flutter_jersey/source/data/cubit/store_keranjang_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/total_harga_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
 import 'package:flutter_jersey/source/data/network/network.dart';
@@ -51,6 +52,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<TotalHargaCubit>(
           create: (totalHarga) => TotalHargaCubit(myRepository: myRepository),
+        ),
+        BlocProvider<StoreKeranjangCubit>(
+          create: (totalHarga) => StoreKeranjangCubit(myRepository: myRepository),
         )
       ],
       child: MaterialApp(

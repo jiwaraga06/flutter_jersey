@@ -1,4 +1,7 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_jersey/source/data/cubit/pesanan_detail_cubit.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/cart.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/favorite.dart';
 import 'package:flutter_jersey/source/screen/page/Dashboard/home.dart';
@@ -31,6 +34,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<PesananDetailCubit>(context).getPesananDetail();
     return Scaffold(
         extendBody: true,
         body: screen[_currentIndex],
@@ -57,7 +61,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 showSelectedLabels: false,
                 showUnselectedLabels: false,
                 onTap: _updateIndex,
-                items: const [
+                items: [
                   BottomNavigationBarItem(
                     label: "Home",
                     icon: Icon(Icons.home),
@@ -72,7 +76,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   ),
                   BottomNavigationBarItem(
                     label: "Cart",
-                    icon: Icon(FontAwesomeIcons.cartShopping),
+                    // icon: Icon(FontAwesomeIcons.cartShopping),
+                    icon: BlocBuilder<PesananDetailCubit, PesananDetailState>(
+                      builder: (context, state) {
+                        if (state is PesananDetailLoading) {
+                          return Icon(FontAwesomeIcons.cartShopping);
+                        }
+                        var data = (state as PesananDetailLoaded).pesananDetail;
+                        if (data!.isEmpty) {
+                          return Icon(FontAwesomeIcons.cartShopping);
+                        }
+                        return Badge(
+                          badgeColor: Colors.white,
+                          badgeContent: Text(data.length.toString()),
+                          animationType: BadgeAnimationType.fade,
+                          child: Icon(FontAwesomeIcons.cartShopping),
+                        );
+                      },
+                    ),
                   ),
                   BottomNavigationBarItem(
                     label: "Profile",

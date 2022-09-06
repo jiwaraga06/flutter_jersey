@@ -133,4 +133,18 @@ class MyNetwork {
       print("Error network total harga");
     }
   }
+
+  Future masukanKeranjang(body) async {
+    try {
+      var url = Uri.parse(Api.masukanKeranjang());
+      var response = await http.post(url,
+          headers: {
+            'Accept': 'application/json',
+          },
+          body: body);
+      return response;
+    } catch (e) {
+      print("Error network masukan keranjang");
+    }
+  }
 }

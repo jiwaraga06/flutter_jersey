@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jersey/source/data/cubit/jersey_cubit.dart';
 import 'package:flutter_jersey/source/data/cubit/wishlist_cubit.dart';
+import 'package:flutter_jersey/source/router/string.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -136,7 +137,9 @@ class _ProductState extends State<Product> {
                         const SizedBox(height: 2),
                         SizedBox(
                           width: 150,
-                          child: ElevatedButton(onPressed: () {}, child: Text("Detail")),
+                          child: ElevatedButton(onPressed: () {
+                            Navigator.pushNamed(context, PRODUCT_DETAIL, arguments: data['id']);
+                          }, child: Text("Detail")),
                         )
                       ],
                     ),
